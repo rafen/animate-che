@@ -1,7 +1,10 @@
 $ ->
+    # image = 'https://raw.githubusercontent.com/rafen/animate-che/master/app/images/armadillo.gif'
+    image = 'images/armadillo.gif'
 
-    # $armadillo = $('<img src="images/armadillo.gif"/>')
-    $armadillo = $('<img src="http://www.quesper.com/Projects_Student/Mammals_Project/armadillo.gif"/>')
+    $armadillo = $('<img/>',
+        src: image
+    )
     $armadillo.css
         position: 'fixed'
         left: '100%'
@@ -12,10 +15,14 @@ $ ->
 
     # Do the moon walk
     moonWalk = ($obj)->
+        speed = 80 # dist / secs
         $obj.css 'left', '100%'
         $obj.animate
-            left: "-320px"
+            left: "-420px"
         ,
-            duration: 7000
+            duration: ($(window).width() / speed) * 1000
+            easing: 'linear'
             #complete: moonWalk
-    moonWalk $armadillo
+
+    if location.search.match /\bmoonwalk\b/
+        moonWalk $armadillo
