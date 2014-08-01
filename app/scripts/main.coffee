@@ -3,8 +3,10 @@ $ ->
     image = 'images/armadillo.gif'
 
     $armadillo = $('<img/>',
-        src: image
+        src: image,
+        id: 'armadillo'
     )
+
     $armadillo.css
         position: 'fixed'
         left: '100%'
@@ -14,9 +16,10 @@ $ ->
     $armadillo.prependTo 'body'
 
     # Do the moon walk
-    moonWalk = ($obj)->
+    moonWalk = ($obj, $orig)->
         speed = 80 # dist / secs
-        $obj.css 'left', '100%'
+        $orig = if $orig then $orig else '100%'
+        $obj.css 'left', $orig
         $obj.animate
             left: "-420px"
         ,
@@ -26,3 +29,10 @@ $ ->
 
     if location.search.match /\bmoonwalk\b/
         moonWalk $armadillo
+
+    $armadillo.click ->
+        $armadillo.toggleClass('reverted')
+        if $armadillo.hasClass('reverted')
+            $armadillo.stop()
+        else
+            moonWalk $armadillo, $armadillo.css("left")
