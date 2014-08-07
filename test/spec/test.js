@@ -3,9 +3,15 @@
 (function () {
     'use strict';
 
-    describe('Give it some context', function () {
-        describe('maybe a bit more context here', function () {
-            it('should run here few assertions', function () {
+    describe('Easter Egg', function () {
+        describe('Armadillo easter egg', function () {
+            it('Armadillo not visible when not moonwalk parameter', function () {
+
+                // if the parameter moonwalk is not in the URL
+                // do not show the armadillo
+                if( location.search.match(/\bmoonwalk\b/) ){
+                    assert.equal(0, $('#armadillo').length);
+                }
 
             });
         });

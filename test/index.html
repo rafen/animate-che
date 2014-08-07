@@ -7,6 +7,7 @@
 </head>
 <body>
     <div id="mocha"></div>
+    <script src="jquery.js"></script>
     <script src="bower_components/mocha/mocha.js"></script>
     <script>mocha.setup('bdd')</script>
     <script src="bower_components/chai/chai.js"></script>
@@ -15,8 +16,10 @@
         var expect = chai.expect;
         var should = chai.should();
     </script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
 
     <!-- include source files here... -->
+    <script src="scripts/main.js"></script>
 
     <!-- include spec files here... -->
     <script src="spec/test.js"></script>
